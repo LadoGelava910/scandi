@@ -10,6 +10,11 @@ export default class Header extends Component {
       currency_selector_display: !this.state.currency_selector_display,
     });
   };
+
+  toggleBasket = () => {
+    this.setState({basket_menu_display: !this.state.basket_menu_display})
+  }
+
   render() {
     let itemQuantity = this.props.products.filter((item) => {
       if (item.inCart === true) {
@@ -17,6 +22,7 @@ export default class Header extends Component {
       }
     });
 
+    
     return (
       <header>
         <nav className="categories_wrapper">
@@ -44,7 +50,7 @@ export default class Header extends Component {
             )}
           </div>
           <div className="header_basket_wrapper">
-            <button>
+            <button onClick={this.toggleBasket}>
               {itemQuantity.length > 0 && (
                 <span className="shopping_cart_quantity">
                   {itemQuantity.length}
@@ -56,7 +62,7 @@ export default class Header extends Component {
                 className="header_basket_icon"
               />
             </button>
-            <div className="shopping_cart_menu">
+           {this.state.basket_menu_display && <div className="shopping_cart_menu">
               <div className="title_box">
                 <h5>My Bag,</h5>
                {itemQuantity.length !== 1 ? <p>{itemQuantity.length} items</p> : <p>{itemQuantity.length} item</p>}
@@ -83,6 +89,7 @@ export default class Header extends Component {
                 })}
               </div>
             </div>
+            }
           </div>
         </div>
       </header>
