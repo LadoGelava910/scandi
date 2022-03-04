@@ -12,3 +12,18 @@
   padding-right: 116px;
   margin-top: 80px;
 }
+
+@media only screen and (max-width: 900px) {
+  .hero_content_wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+    
+  }
+}
+
+@media only screen and (max-width: 775px) {
+  .hero_content_wrapper h2{
+   text-align: center;
+    
+  }
+}
