@@ -216,3 +216,12 @@ cursor: pointer;
   justify-content: space-between;
   width: 325px;
 }
+
+
+@media only screen and (max-width: 900px) {
+  header {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    
+  }
+}

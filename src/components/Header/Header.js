@@ -12,12 +12,24 @@ export default class Header extends Component {
   currencySelectHandler = () => {
     this.setState({
       currency_selector_display: !this.state.currency_selector_display,
+      
     });
+    this.setState({basket_menu_display: false})
+
   };
 
   toggleBasket = () => {
+<<<<<<< HEAD
     this.setState({ basket_menu_display: !this.state.basket_menu_display });
   };
+=======
+    this.setState({basket_menu_display: !this.state.basket_menu_display})
+    this.setState({
+      currency_selector_display: false,
+    });
+    
+  }
+>>>>>>> 2d18c210b29c043330b27d05cc7dbfcb3bbcdcf1
 
   render() {
     // const { id, counter } = this.state.itemQuantity;
