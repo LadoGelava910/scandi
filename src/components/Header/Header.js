@@ -4,7 +4,11 @@ import header_basket from "../../media/ShoppingCart.png";
 import chevron from "../../media/chevron.png";
 import "./Header.css";
 export default class Header extends Component {
-  state = { currency_selector_display: false, basket_menu_display: false };
+  state = {
+    currency_selector_display: false,
+    basket_menu_display: false,
+  };
+
   currencySelectHandler = () => {
     this.setState({
       currency_selector_display: !this.state.currency_selector_display,
@@ -12,17 +16,17 @@ export default class Header extends Component {
   };
 
   toggleBasket = () => {
-    this.setState({basket_menu_display: !this.state.basket_menu_display})
-  }
+    this.setState({ basket_menu_display: !this.state.basket_menu_display });
+  };
 
   render() {
+    // const { id, counter } = this.state.itemQuantity;
     let itemQuantity = this.props.products.filter((item) => {
       if (item.inCart === true) {
         return item;
       }
     });
 
-    
     return (
       <header>
         <nav className="categories_wrapper">
@@ -62,34 +66,68 @@ export default class Header extends Component {
                 className="header_basket_icon"
               />
             </button>
-           {this.state.basket_menu_display && <div className="shopping_cart_menu">
-              <div className="title_box">
-                <h5>My Bag,</h5>
-               {itemQuantity.length !== 1 ? <p>{itemQuantity.length} items</p> : <p>{itemQuantity.length} item</p>}
+            {this.state.basket_menu_display && (
+              <div className="shopping_cart_menu">
+                <div className="title_box">
+                  <h5>My Bag,</h5>
+                  {itemQuantity.length !== 1 ? (
+                    <p>{itemQuantity.length} items</p>
+                  ) : (
+                    <p>{itemQuantity.length} item</p>
+                  )}
+                </div>
+                <div className="products_in_cart">
+                  {this.props.products.map((product) => {
+                    if (product.inCart) {
+                      return (
+                        <>
+                          <div
+                            key={product.id}
+                            className="product_item_in_cart"
+                          >
+                            <div className="title_and_price">
+                              <h6>{product.title}</h6>
+                              <p>${product.price}</p>
+                              <div className="size_btns">
+                                <button className="chosen">S</button>
+                                <button>M</button>
+                              </div>
+                            </div>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                gap: "10px",
+                              }}
+                            >
+                              <button
+                                onClick={() => {
+                                  this.props.incrementQuantity(product.id);
+                                }}
+                              >
+                                +
+                              </button>
+                              <span>{product.cartQuantity}</span>
+                              <button
+                                onClick={() => {
+                                  this.props.decrementQuantity(product.id);
+                                }}
+                              >
+                                -
+                              </button>
+                            </div>
+                            <div className="image_and_quantity">
+                              <img src={product.img} alt={product.title} />
+                            </div>
+                          </div>
+                        </>
+                      );
+                    }
+                  })}
+                </div>
               </div>
-              <div className="products_in_cart">
-                {this.props.products.map(product=> {
-                  if(product.inCart ){
-                  return <>
-                  <div key={product.id} className="product_item_in_cart">
-                    <div className="title_and_price"><h6>{product.title}</h6>
-                    <p>${product.price}</p>
-                    <div className="size_btns">
-                      <button className="chosen">S</button>
-                      <button>M</button>
-                    </div>
-                    </div>
-                    <div className="image_and_quantity">
-                      <img src={product.img} alt={product.title}/>
-                    </div>
-                    
-                  </div>
-                  </>
-                  }
-                })}
-              </div>
-            </div>
-            }
+            )}
           </div>
         </div>
       </header>

@@ -21,19 +21,23 @@ export default class ProductItem extends Component {
           onMouseEnter={this.mouseEnterHandler}
           onMouseLeave={this.mouseLeaveHandler}
         >
-          <img src={this.props.product.img} alt="Product"></img>
-          {this.state.isHovered && (
-            <div
-              className="basket_wrapper"
-              onClick={() => this.props.addToCart(this.props.product.id)}
-            >
-              <img
-                style={{ width: "26px", height: "26px", marginTop: "0px" }}
-                src={basket}
-                alt="ShoppingBasket"
-              />
-            </div>
-          )}
+          <div className="img_box">
+            <img src={this.props.product.img} alt="Product"></img>
+
+            {this.state.isHovered && (
+              <div
+                className="basket_wrapper"
+                onClick={() => this.props.addToCart(this.props.product.id)}
+              >
+                <img
+                  style={{ width: "26px", height: "26px", marginTop: "0px" }}
+                  src={basket}
+                  alt="ShoppingBasket"
+                />
+              </div>
+            )}
+          </div>
+
           <div className="product_description">
             <h3>{this.props.product.title}</h3>
             <p>${this.props.product.price.toFixed(2)}</p>
