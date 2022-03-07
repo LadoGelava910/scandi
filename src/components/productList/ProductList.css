@@ -1,6 +1,6 @@
 .product_list_wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0;
   flex-wrap: wrap !important;
   gap: 50px;
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 386px;
+  max-width: 386px;
   height: 444px;
   /* padding-bottom: 15px; */
   cursor: pointer;
@@ -125,5 +125,8 @@
   .product_item_wrapper {
     width: 80%;
     min-width: 320px;
+  }
+  .product_item_wrapper .img_box {
+    width: 100%;
   }
 }

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import basket from "../../media/basket.png";
+import { Link } from "react-router-dom";
+
 export default class ProductItem extends Component {
   state = {
     isHovered: false,
@@ -22,7 +24,9 @@ export default class ProductItem extends Component {
           onMouseLeave={this.mouseLeaveHandler}
         >
           <div className="img_box">
-            <img src={this.props.product.img} alt="Product"></img>
+            <Link to={`/product/${this.props.product.id}`}>
+              <img src={this.props.product.img} alt="Product"></img>
+            </Link>
 
             {this.state.isHovered && (
               <div
@@ -33,6 +37,7 @@ export default class ProductItem extends Component {
                   style={{ width: "26px", height: "26px", marginTop: "0px" }}
                   src={basket}
                   alt="ShoppingBasket"
+                  // onClick={() => history.push(`/product/${this.props.elem.id}`)}
                 />
               </div>
             )}
