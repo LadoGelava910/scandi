@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./InnerPage.css";
 import SizeButton from "./SizeButton";
-const InnerPage = ({ products }) => {
+const InnerPage = ({ products, addToCart }) => {
   console.log(products);
   const { id } = useParams();
   console.log(id);
@@ -42,7 +42,8 @@ const InnerPage = ({ products }) => {
                     <b>${item.price.toFixed(2)}</b>
                   </p>
                 </div>
-                <button className="add_to_cart_inner">ADD TO CART</button>
+                <button onClick={() => addToCart(item.id)
+                } className="add_to_cart_inner">ADD TO CART</button>
                 <div className="inner_description_wrapper">
                   <p>{item.description}</p>
                 </div>

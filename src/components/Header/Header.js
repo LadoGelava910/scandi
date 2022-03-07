@@ -98,11 +98,14 @@ export default class Header extends Component {
                               </div>
                             </div>
                             <div
+                              className="quantity_wrapper"
                               style={{
                                 display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
+                                justifyContent: "space-between",
                                 gap: "10px",
+                                height: "137px",
                               }}
                             >
                               <button

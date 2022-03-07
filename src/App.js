@@ -136,6 +136,19 @@ export default class App extends Component {
     });
   };
 
+  add_to_card_from_inner_page = (productId) => {
+    this.setState({
+      ...this.state.products,
+      products: this.state.products.map((product) => {
+        if (product.id === productId) {
+          product.inCart = true;
+          product.cartQuantity = 1;
+        }
+        return product;
+      }),
+    });
+  };
+
   render() {
     return (
       <>
@@ -163,6 +176,7 @@ export default class App extends Component {
                   products={this.state.products}
                   incrementQuantity={this.incrementQuantity}
                   decrementQuantity={this.decrementQuantity}
+                  addToCart={this.add_to_card_from_inner_page}
                 />
               }
             />
