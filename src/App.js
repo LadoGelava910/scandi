@@ -137,6 +137,7 @@ export default class App extends Component {
         return product;
       }),
     });
+    this.setState({ ...this.state, total: this.state.total + 50 });
   };
 
   decrementQuantity = (productId) => {
@@ -152,6 +153,7 @@ export default class App extends Component {
         return product;
       }),
     });
+    this.setState({ ...this.state, total: this.state.total - 50 });
   };
 
   add_to_card_from_inner_page = (productId) => {
