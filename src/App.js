@@ -94,6 +94,23 @@ export default class App extends Component {
           "find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands",
       },
     ],
+    total: null,
+  };
+
+  countTotal = () => {
+    this.setState({
+      ...this.state,
+      total: this.state.products
+        .filter((item) => {
+          return item.inCart === true;
+        })
+        .map((elem) => {
+          return elem.price;
+        })
+        .reduce(function (a, b) {
+          return a + b;
+        }, 0),
+    });
   };
 
   addToCart = (productId) => {
@@ -107,6 +124,7 @@ export default class App extends Component {
         return product;
       }),
     });
+    this.countTotal();
   };
 
   incrementQuantity = (productId) => {
@@ -156,6 +174,7 @@ export default class App extends Component {
           products={this.state.products}
           incrementQuantity={this.incrementQuantity}
           decrementQuantity={this.decrementQuantity}
+          total={this.state.total}
         />
 
         <BrowserRouter>

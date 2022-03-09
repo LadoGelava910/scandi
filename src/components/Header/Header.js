@@ -132,6 +132,14 @@ export default class Header extends Component {
                       );
                     }
                   })}
+                  <div className="total_wrapper">
+                    <p>Total</p>
+                    <p>${this.props.total}</p>
+                  </div>
+                  <div className="cart_btns_wrapper">
+                    <button>View Bag</button>
+                    <button>Check Out</button>
+                  </div>
                 </div>
               </div>
             )}
